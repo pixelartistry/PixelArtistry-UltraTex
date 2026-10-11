@@ -4,8 +4,6 @@ Textures any untextured mesh from **one reference image**: readable text and log
 
 ![UltraTex texture on the Volt character](docs/images/volt_ultratex.png)
 
-▶ Video tutorial: [VIDEO_URL]
-
 ## Which workflow for my GPU?
 
 | Workflow | Best for | Nodes |
@@ -184,11 +182,6 @@ Reported by the community (not measured by me):
 - Runs on a 6 GB GPU at 1024.
 - 6.8 GB VRAM at 1536 on an 8 GB laptop (reported by MostAadTech).
 
-Still testing:
-
-- Workflow 3 at 25 steps: [GGUF_25_STEPS]
-- Simulated 6 GB card: [6GB_SIMULATED_RESULT]
-
 ## Tips
 
 More details and fixes: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
@@ -215,8 +208,8 @@ More details and fixes: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 **PixelArtistry:**
 
 - YouTube: [youtube.com/@PixelArtistry_](https://www.youtube.com/@PixelArtistry_)
-- FutureFrames newsletter: [NEWSLETTER_URL]
-- Workflow Pack waitlist: [WAITLIST_URL]
+- FutureFrames newsletter: [go.pixel-artistry.com/newsletter](https://go.pixel-artistry.com/newsletter)
+- Workflow Pack waitlist: [go.pixel-artistry.com/Trellis2WorkflowPackWaitlist](https://go.pixel-artistry.com/Trellis2WorkflowPackWaitlist)
 
 ## License
 
