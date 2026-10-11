@@ -18,7 +18,7 @@ Textures any untextured mesh from **one reference image**: readable text and log
 
 ### a) Recommended: ComfyUI-Easy-Install
 
-1. Install [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install) if you don't have it yet.
+1. Install [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install) if you don't have it yet. My **[installation guide](https://go.pixel-artistry.com/Trellis2InstallationGuide)** walks you through every step.
 2. On this page: **Code → Download ZIP**.
 3. Unzip it into `ComfyUI-Easy-Install\Add-Ons\`. You get `Add-Ons\PixelArtistry-UltraTex-main\` with `Install-UltraTex.bat` and the `workflows` folder inside. Keep them together.
 4. Close ComfyUI.
@@ -128,7 +128,7 @@ Extra models:
 
 No. UltraTex **textures** meshes, it doesn't make them. Trellis2 / Pixal3D are optional, only for generating the mesh. Any untextured GLB, OBJ or PLY works, including your own sculpt.
 
-If you want to generate meshes too: [TRELLIS2_GUIDE_URL]
+If you want to generate meshes too: [TRELLIS.2 Installation Guide](https://go.pixel-artistry.com/Trellis2InstallationGuide)
 
 Tested on a clean ComfyUI-Easy-Install without Trellis2: [RESULT]
 
