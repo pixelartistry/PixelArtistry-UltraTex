@@ -1,0 +1,2121 @@
+{
+ "id": "e286c90e-378f-462f-a3e8-884c58fc2686",
+ "revision": 0,
+ "last_node_id": 55,
+ "last_link_id": 59,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "Load3DAdvanced",
+   "pos": [
+    20,
+    80
+   ],
+   "size": [
+    330,
+    360
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D",
+     "slot_index": 0,
+     "links": [
+      1
+     ]
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "slot_index": 1,
+     "links": null
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "slot_index": 2,
+     "links": null
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "slot_index": 3,
+     "links": null
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "slot_index": 4,
+     "links": null
+    }
+   ],
+   "title": "Your mesh (GLB)",
+   "properties": {
+    "Node name for S&R": "Load3DAdvanced",
+    "Camera Config": {
+     "cameraType": "perspective",
+     "fov": 35,
+     "hasCustomUp": false,
+     "state": {
+      "position": {
+       "x": 1.9529292434453962,
+       "y": 0.9809334427118299,
+       "z": 1.9681772738695145
+      },
+      "target": {
+       "x": -0.004101231694221497,
+       "y": 0.002418205142021179,
+       "z": 0.011146798729896545
+      },
+      "zoom": 1,
+      "cameraType": "perspective",
+      "quaternion": {
+       "x": -0.1562298570518912,
+       "y": 0.3771722397422857,
+       "z": 0.06471252563850326,
+       "w": 0.9105743365364628
+      },
+      "fov": 35,
+      "aspect": 1,
+      "near": 0.01,
+      "far": 10000,
+      "frustum": {
+       "left": -5,
+       "right": 5,
+       "top": 5,
+       "bottom": -5
+      }
+     }
+    },
+    "Light Config": {
+     "intensity": 3,
+     "hdri": {
+      "enabled": false,
+      "hdriPath": "",
+      "showAsBackground": false,
+      "intensity": 1
+     }
+    },
+    "Scene Config": {
+     "showGrid": true,
+     "backgroundColor": "#282828",
+     "backgroundImage": "",
+     "backgroundRenderMode": "tiled",
+     "models": [
+      {
+       "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+       },
+       "quaternion": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+       },
+       "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+       }
+      }
+     ]
+    },
+    "Model Config": {
+     "upDirection": "original",
+     "materialMode": "original",
+     "showSkeleton": false,
+     "gizmo": {
+      "enabled": false,
+      "mode": "translate",
+      "position": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "rotation": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "scale": {
+       "x": 1,
+       "y": 1,
+       "z": 1
+      }
+     }
+    }
+   },
+   "widgets_values": [
+    "3d/p13.glb",
+    "",
+    512,
+    512
+   ],
+   "widgets_values_named": {
+    "model_file": "3d/p13.glb",
+    "viewport_state": "",
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "id": 2,
+   "type": "UTXFileToMesh",
+   "pos": [
+    380,
+    80
+   ],
+   "size": [
+    300,
+    80
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "file",
+     "type": "FILE_3D_GLB,FILE_3D",
+     "link": 1
+    }
+   ],
+   "outputs": [
+    {
+     "name": "MESH",
+     "type": "MESH",
+     "slot_index": 0,
+     "links": [
+      35
+     ]
+    },
+    {
+     "name": "UTX_REPORT",
+     "type": "UTX_REPORT",
+     "slot_index": 1,
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXFileToMesh"
+   }
+  },
+  {
+   "id": 3,
+   "type": "LoadImage",
+   "pos": [
+    20,
+    480
+   ],
+   "size": [
+    330,
+    440
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      5,
+      39
+     ]
+    },
+    {
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 1,
+     "links": null
+    }
+   ],
+   "title": "Reference image",
+   "properties": {
+    "Node name for S&R": "LoadImage"
+   },
+   "widgets_values": [
+    "your_reference.png",
+    "image"
+   ],
+   "widgets_values_named": {
+    "image": "enemy.jpg",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 5,
+   "type": "UnetLoaderGGUF",
+   "pos": [
+    900,
+    80
+   ],
+   "size": [
+    360,
+    60
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "MODEL",
+     "type": "MODEL",
+     "slot_index": 0,
+     "links": [
+      8,
+      23
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UnetLoaderGGUF"
+   },
+   "widgets_values": [
+    "flux-2-klein-base-9b-Q4_0.gguf"
+   ],
+   "widgets_values_named": {
+    "unet_name": "flux-2-klein-base-9b-Q4_0.gguf"
+   }
+  },
+  {
+   "id": 6,
+   "type": "VAELoader",
+   "pos": [
+    900,
+    310
+   ],
+   "size": [
+    360,
+    60
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      9,
+      24
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "VAELoader"
+   },
+   "widgets_values": [
+    "flux2-vae.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "flux2-vae.safetensors"
+   }
+  },
+  {
+   "id": 7,
+   "type": "CLIPLoaderGGUF",
+   "pos": [
+    900,
+    180
+   ],
+   "size": [
+    360,
+    90
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "CLIP",
+     "type": "CLIP",
+     "slot_index": 0,
+     "links": [
+      10,
+      48
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "CLIPLoaderGGUF"
+   },
+   "widgets_values": [
+    "Qwen3-8B-Q4_K_M.gguf",
+    "flux2"
+   ],
+   "widgets_values_named": {
+    "clip_name": "Qwen3-8B-Q6_K.gguf",
+    "type": "flux2"
+   }
+  },
+  {
+   "id": 8,
+   "type": "UTXTextEncode",
+   "pos": [
+    900,
+    410
+   ],
+   "size": [
+    360,
+    110
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 8,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "clip",
+     "type": "CLIP",
+     "link": 10
+    }
+   ],
+   "outputs": [
+    {
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      11,
+      25
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXTextEncode"
+   },
+   "widgets_values": [
+    ""
+   ],
+   "widgets_values_named": {
+    "text": ""
+   },
+   "title": "Empty prompt (albedo)"
+  },
+  {
+   "id": 9,
+   "type": "UTXGenerateTextureViewsV23",
+   "pos": [
+    1840,
+    80
+   ],
+   "size": [
+    370,
+    560
+   ],
+   "flags": {},
+   "order": 13,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "source",
+     "type": "UTX_PREPARED_SOURCE_V23",
+     "link": 41
+    },
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 8
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 9
+    },
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 11
+    },
+    {
+     "name": "negative",
+     "shape": 7,
+     "type": "CONDITIONING",
+     "link": 50
+    }
+   ],
+   "outputs": [
+    {
+     "name": "UTX_VIEW_COLLECTION",
+     "type": "UTX_VIEW_COLLECTION",
+     "links": [
+      14,
+      51
+     ]
+    },
+    {
+     "name": "all_views_512",
+     "type": "IMAGE",
+     "links": null
+    },
+    {
+     "name": "contact_sheet",
+     "type": "IMAGE",
+     "links": [
+      15
+     ]
+    },
+    {
+     "name": "generation_setup_to_bake",
+     "type": "UTX_TEXTURE_SETUP",
+     "links": [
+      52
+     ]
+    }
+   ],
+   "title": "Generate \u00b7 Albedo (resolution + views HERE)",
+   "properties": {
+    "Node name for S&R": "UTXGenerateTextureViews"
+   },
+   "widgets_values": [
+    "ultratex_flux2.safetensors",
+    1,
+    "ultratex_flux2_decoder.pt",
+    "albedo",
+    1024,
+    12,
+    0,
+    "fixed",
+    4,
+    4,
+    1,
+    0.2,
+    "guided",
+    0.55,
+    4,
+    true
+   ],
+   "widgets_values_named": {
+    "lora_name": "ultratex_flux2.safetensors",
+    "lora_strength": 1,
+    "decoder_name": "ultratex_flux2_decoder.pt",
+    "task": "albedo",
+    "view_resolution": 1024,
+    "view_count": 12,
+    "seed": 0,
+    "control_after_generate": "fixed",
+    "steps": 4,
+    "guidance": 4,
+    "denoise": 1,
+    "sparse_retention": 0.2,
+    "extra_angle_mode": "guided",
+    "extra_denoise": 0.55,
+    "extra_steps": 4,
+    "tiled_decode": true
+   }
+  },
+  {
+   "id": 10,
+   "type": "PreviewImage",
+   "pos": [
+    1840,
+    680
+   ],
+   "size": [
+    370,
+    300
+   ],
+   "flags": {},
+   "order": 19,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 15
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": null
+    }
+   ],
+   "title": "All generated views",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 11,
+   "type": "UTXSaveViews",
+   "pos": [
+    1840,
+    1020
+   ],
+   "size": [
+    370,
+    80
+   ],
+   "flags": {},
+   "order": 18,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "views",
+     "type": "UTX_VIEW_COLLECTION",
+     "link": 14
+    }
+   ],
+   "outputs": [
+    {
+     "name": "manifest_path",
+     "type": "STRING",
+     "slot_index": 0,
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXSaveViews"
+   },
+   "widgets_values": [
+    "ultratex_views"
+   ],
+   "widgets_values_named": {
+    "prefix": "ultratex_views"
+   }
+  },
+  {
+   "id": 13,
+   "type": "SaveGLB",
+   "pos": [
+    3150,
+    80
+   ],
+   "size": [
+    360,
+    110
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "MESH,FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_OBJ,FILE_3D_FBX,FILE_3D_STL,FILE_3D_USDZ,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_SPZ,FILE_3D_KSPLAT,FILE_3D_SPLAT_ANY,FILE_3D_POINT_CLOUD_ANY,FILE_3D",
+     "link": 55
+    }
+   ],
+   "outputs": [],
+   "properties": {
+    "Node name for S&R": "SaveGLB",
+    "Last Time Model File": "ultratex/textured_00005_.glb",
+    "Last Time Model Folder": "output",
+    "Camera Config": {
+     "cameraType": "perspective",
+     "fov": 35,
+     "hasCustomUp": false
+    },
+    "Light Config": {
+     "intensity": 3,
+     "hdri": {
+      "enabled": false,
+      "hdriPath": "",
+      "showAsBackground": false,
+      "intensity": 1
+     }
+    },
+    "Scene Config": {
+     "showGrid": true,
+     "backgroundColor": "#282828",
+     "backgroundImage": "",
+     "backgroundRenderMode": "tiled",
+     "models": [
+      {
+       "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+       },
+       "quaternion": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+       },
+       "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+       }
+      }
+     ]
+    },
+    "Model Config": {
+     "upDirection": "original",
+     "materialMode": "original",
+     "showSkeleton": false,
+     "gizmo": {
+      "enabled": false,
+      "mode": "translate",
+      "position": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "rotation": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "scale": {
+       "x": 1,
+       "y": 1,
+       "z": 1
+      }
+     }
+    }
+   },
+   "widgets_values": [
+    "ultratex/textured",
+    ""
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "ultratex/textured",
+    "image": ""
+   }
+  },
+  {
+   "id": 14,
+   "type": "SaveImage",
+   "pos": [
+    2720,
+    410
+   ],
+   "size": [
+    380,
+    220
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 56
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "SaveImage"
+   },
+   "widgets_values": [
+    "ultratex/base_color"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "ultratex/base_color"
+   }
+  },
+  {
+   "id": 15,
+   "type": "MarkdownNote",
+   "pos": [
+    1820,
+    1960
+   ],
+   "size": [
+    820,
+    260
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "### Notes from the developer (MostAadTech)\nUltraTex Modular FAST v0.2.3 \u2014 view resolution and 6/12-view count are controlled ONLY on Generate. Prepare owns UVs and reference mask. IMPORTANT: for BiRefNet, mask_polarity=foreground. Bake SETUP comes from Generate 4th output. For 12-view Albedo, the MR Generate node may use 6 views. Use UV mode comfy_gpu when you need the same unwrap behavior as v3.1; keep_existing to save time if UVs are already valid. 4 steps used as requested. No GPU benchmark was run on this package."
+   ],
+   "widgets_values_named": {
+    "text": "UltraTex Modular FAST v0.2.3 \u2014 view resolution and 6/12-view count are controlled ONLY on Generate. Prepare owns UVs and reference mask. IMPORTANT: for BiRefNet, mask_polarity=foreground. Bake SETUP comes from Generate 4th output. For 12-view Albedo, the MR Generate node may use 6 views. Use UV mode comfy_gpu when you need the same unwrap behavior as v3.1; keep_existing to save time if UVs are already valid. 4 steps used as requested. No GPU benchmark was run on this package."
+   },
+   "color": "#323",
+   "bgcolor": "#545",
+   "title": "Developer notes \u00b7 MostAadTech"
+  },
+  {
+   "id": 20,
+   "type": "UTXGenerateTextureViewsV23",
+   "pos": [
+    2240,
+    80
+   ],
+   "size": [
+    370,
+    560
+   ],
+   "flags": {},
+   "order": 14,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "source",
+     "type": "UTX_PREPARED_SOURCE_V23",
+     "link": 47
+    },
+    {
+     "name": "model",
+     "type": "MODEL",
+     "link": 23
+    },
+    {
+     "name": "vae",
+     "type": "VAE",
+     "link": 24
+    },
+    {
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 25
+    },
+    {
+     "name": "negative",
+     "shape": 7,
+     "type": "CONDITIONING",
+     "link": 49
+    }
+   ],
+   "outputs": [
+    {
+     "name": "UTX_VIEW_COLLECTION",
+     "type": "UTX_VIEW_COLLECTION",
+     "links": [
+      53
+     ]
+    },
+    {
+     "name": "all_views_512",
+     "type": "IMAGE",
+     "links": null
+    },
+    {
+     "name": "contact_sheet",
+     "type": "IMAGE",
+     "links": [
+      27
+     ]
+    },
+    {
+     "name": "generation_setup_to_bake",
+     "type": "UTX_TEXTURE_SETUP",
+     "links": [
+      54
+     ]
+    }
+   ],
+   "title": "Generate \u00b7 Metallic-Roughness (6 views)",
+   "properties": {
+    "Node name for S&R": "UTXGenerateTextureViewsV23"
+   },
+   "widgets_values": [
+    "ultratex_flux2_mr.safetensors",
+    1,
+    "ultratex_flux2_decoder.pt",
+    "mr",
+    1024,
+    6,
+    0,
+    "fixed",
+    4,
+    4,
+    1,
+    0.2,
+    "independent",
+    0.55,
+    4,
+    true
+   ],
+   "widgets_values_named": {
+    "lora_name": "ultratex_flux2_mr.safetensors",
+    "lora_strength": 1,
+    "decoder_name": "ultratex_flux2_decoder.pt",
+    "task": "mr",
+    "view_resolution": 1024,
+    "view_count": 12,
+    "seed": 0,
+    "control_after_generate": "fixed",
+    "steps": 4,
+    "guidance": 4,
+    "denoise": 1,
+    "sparse_retention": 0.2,
+    "extra_angle_mode": "independent",
+    "extra_denoise": 0.55,
+    "extra_steps": 4,
+    "tiled_decode": true
+   }
+  },
+  {
+   "id": 21,
+   "type": "PreviewImage",
+   "pos": [
+    2240,
+    680
+   ],
+   "size": [
+    370,
+    300
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 20,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 27
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "MR generated views",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 22,
+   "type": "SaveImage",
+   "pos": [
+    3150,
+    230
+   ],
+   "size": [
+    360,
+    200
+   ],
+   "flags": {},
+   "order": 25,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 58
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "Save roughness map",
+   "properties": {
+    "Node name for S&R": "SaveImage"
+   },
+   "widgets_values": [
+    "ultratex/roughness"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "ultratex/roughness"
+   }
+  },
+  {
+   "id": 23,
+   "type": "SaveImage",
+   "pos": [
+    3150,
+    470
+   ],
+   "size": [
+    360,
+    200
+   ],
+   "flags": {},
+   "order": 26,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 57
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "Save metallic map",
+   "properties": {
+    "Node name for S&R": "SaveImage"
+   },
+   "widgets_values": [
+    "ultratex/metallic"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "ultratex/metallic"
+   }
+  },
+  {
+   "id": 30,
+   "type": "LoadBackgroundRemovalModel",
+   "pos": [
+    380,
+    480
+   ],
+   "size": [
+    300,
+    60
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "bg_model",
+     "type": "BACKGROUND_REMOVAL",
+     "links": [
+      4
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "LoadBackgroundRemovalModel"
+   },
+   "widgets_values": [
+    "birefnet.safetensors"
+   ],
+   "widgets_values_named": {
+    "bg_removal_name": "birefnet.safetensors"
+   }
+  },
+  {
+   "id": 31,
+   "type": "RemoveBackground",
+   "pos": [
+    380,
+    580
+   ],
+   "size": [
+    300,
+    50
+   ],
+   "flags": {},
+   "order": 10,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "bg_removal_model",
+     "type": "BACKGROUND_REMOVAL",
+     "link": 4
+    },
+    {
+     "name": "image",
+     "type": "IMAGE",
+     "link": 5
+    }
+   ],
+   "outputs": [
+    {
+     "name": "mask",
+     "type": "MASK",
+     "links": [
+      40
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "RemoveBackground"
+   }
+  },
+  {
+   "id": 40,
+   "type": "PreviewImage",
+   "pos": [
+    1360,
+    310
+   ],
+   "size": [
+    380,
+    230
+   ],
+   "flags": {},
+   "order": 15,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 42
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "Actual 6 RGB normal views (preview)",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 41,
+   "type": "PreviewImage",
+   "pos": [
+    1360,
+    580
+   ],
+   "size": [
+    380,
+    230
+   ],
+   "flags": {},
+   "order": 16,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 43
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "Aligned colored reference (preview)",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 42,
+   "type": "MaskToImage",
+   "pos": [
+    1360,
+    850
+   ],
+   "size": [
+    380,
+    30
+   ],
+   "flags": {},
+   "order": 17,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mask",
+     "type": "MASK",
+     "link": 44
+    }
+   ],
+   "outputs": [
+    {
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      21
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MaskToImage"
+   }
+  },
+  {
+   "id": 43,
+   "type": "PreviewImage",
+   "pos": [
+    1360,
+    920
+   ],
+   "size": [
+    380,
+    200
+   ],
+   "flags": {},
+   "order": 22,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "link": 21
+    }
+   ],
+   "outputs": [
+    {
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "title": "Aligned foreground mask (preview)",
+   "properties": {
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 44,
+   "type": "UTXUnwrapMeshUVV25",
+   "pos": [
+    380,
+    200
+   ],
+   "size": [
+    300,
+    110
+   ],
+   "flags": {},
+   "order": 11,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "MESH",
+     "link": 35
+    }
+   ],
+   "outputs": [
+    {
+     "name": "uv_mesh",
+     "type": "MESH",
+     "links": [
+      38
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXUnwrapMeshUVV25"
+   },
+   "widgets_values": [
+    4096,
+    "comfy_gpu",
+    16
+   ],
+   "widgets_values_named": {
+    "atlas_size": 4096,
+    "uv_mode": "comfy_gpu",
+    "padding": 16
+   },
+   "title": "UV unwrap"
+  },
+  {
+   "id": 45,
+   "type": "UTXPrepareTextureV25",
+   "pos": [
+    1360,
+    80
+   ],
+   "size": [
+    380,
+    190
+   ],
+   "flags": {},
+   "order": 12,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "mesh",
+     "type": "MESH",
+     "link": 38
+    },
+    {
+     "name": "reference",
+     "type": "IMAGE",
+     "link": 39
+    },
+    {
+     "name": "mask",
+     "shape": 7,
+     "type": "MASK",
+     "link": 40
+    },
+    {
+     "name": "runtime",
+     "shape": 7,
+     "type": "UTX_RUNTIME_POLICY",
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "name": "prepared_source",
+     "type": "UTX_PREPARED_SOURCE_V23",
+     "links": [
+      41,
+      47
+     ]
+    },
+    {
+     "name": "prepared_mesh",
+     "type": "MESH",
+     "links": null
+    },
+    {
+     "name": "normal_views_512",
+     "type": "IMAGE",
+     "links": [
+      42
+     ]
+    },
+    {
+     "name": "aligned_reference_512",
+     "type": "IMAGE",
+     "links": [
+      43
+     ]
+    },
+    {
+     "name": "aligned_mask_512",
+     "type": "MASK",
+     "links": [
+      44
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXPrepareTextureV25"
+   },
+   "widgets_values": [
+    "front",
+    "foreground",
+    "auto_smooth"
+   ],
+   "widgets_values_named": {
+    "alignment": "front",
+    "mask_polarity": "foreground",
+    "normal_mode": "auto_smooth"
+   },
+   "title": "Prepare mesh + reference"
+  },
+  {
+   "id": 47,
+   "type": "UTXTextEncode",
+   "pos": [
+    900,
+    560
+   ],
+   "size": [
+    360,
+    110
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 9,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "clip",
+     "type": "CLIP",
+     "link": 48
+    }
+   ],
+   "outputs": [
+    {
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "slot_index": 0,
+     "links": [
+      49,
+      50
+     ]
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXTextEncode"
+   },
+   "widgets_values": [
+    ""
+   ],
+   "widgets_values_named": {
+    "text": ""
+   },
+   "title": "Empty prompt (MR)"
+  },
+  {
+   "id": 48,
+   "type": "UTXBakeTextureV26",
+   "pos": [
+    2720,
+    80
+   ],
+   "size": [
+    400,
+    290
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "albedo_setup",
+     "type": "UTX_TEXTURE_SETUP",
+     "link": 52
+    },
+    {
+     "name": "albedo_views",
+     "type": "UTX_VIEW_COLLECTION",
+     "link": 51
+    },
+    {
+     "name": "mr_setup",
+     "shape": 7,
+     "type": "UTX_TEXTURE_SETUP",
+     "link": 54
+    },
+    {
+     "name": "mr_views",
+     "shape": 7,
+     "type": "UTX_VIEW_COLLECTION",
+     "link": 53
+    }
+   ],
+   "outputs": [
+    {
+     "name": "MESH",
+     "type": "MESH",
+     "links": [
+      55
+     ]
+    },
+    {
+     "name": "base_color",
+     "type": "IMAGE",
+     "links": [
+      56
+     ]
+    },
+    {
+     "name": "roughness",
+     "type": "IMAGE",
+     "links": [
+      58
+     ]
+    },
+    {
+     "name": "metallic",
+     "type": "IMAGE",
+     "links": [
+      57
+     ]
+    },
+    {
+     "name": "FILE_3D_GLB",
+     "type": "FILE_3D_GLB",
+     "links": [
+      59
+     ]
+    },
+    {
+     "name": "unseen_before_fill",
+     "type": "MASK",
+     "links": null
+    },
+    {
+     "name": "projection_confidence",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "UTXBakeTextureV26"
+   },
+   "widgets_values": [
+    2048,
+    true,
+    "detail_preserving",
+    "normal_aware_surface"
+   ],
+   "widgets_values_named": {
+    "texture_size": 4096,
+    "fill_unseen": true,
+    "blend_mode": "detail_preserving",
+    "repair_mode": "normal_aware_surface"
+   }
+  },
+  {
+   "id": 49,
+   "type": "Preview3DAdvanced",
+   "pos": [
+    2720,
+    700
+   ],
+   "size": [
+    540,
+    520
+   ],
+   "flags": {},
+   "order": 49,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+     "link": 59
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "link": null,
+     "shape": 7
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "link": null,
+     "shape": 7
+    }
+   ],
+   "outputs": [
+    {
+     "name": "model_3d",
+     "type": "FILE_3D",
+     "links": null
+    },
+    {
+     "name": "model_3d_info",
+     "type": "LOAD3D_MODEL_INFO",
+     "links": null
+    },
+    {
+     "name": "camera_info",
+     "type": "LOAD3D_CAMERA",
+     "links": null
+    },
+    {
+     "name": "width",
+     "type": "INT",
+     "links": null
+    },
+    {
+     "name": "height",
+     "type": "INT",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.38.0",
+    "Node name for S&R": "Preview3DAdvanced",
+    "Camera Config": {
+     "cameraType": "perspective",
+     "fov": 35,
+     "hasCustomUp": false,
+     "state": {
+      "position": {
+       "x": -0.442618911232288,
+       "y": 0.5610654210393151,
+       "z": 2.2314052152323804
+      },
+      "target": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "zoom": 1,
+      "cameraType": "perspective",
+      "quaternion": {
+       "x": -0.12003263950586747,
+       "y": -0.09703855551230088,
+       "z": -0.011789913246463023,
+       "w": 0.9879456878507955
+      },
+      "fov": 35,
+      "aspect": 1,
+      "near": 0.01,
+      "far": 10000,
+      "frustum": {
+       "left": -5,
+       "right": 5,
+       "top": 5,
+       "bottom": -5
+      }
+     }
+    },
+    "Light Config": {
+     "intensity": 3,
+     "hdri": {
+      "enabled": false,
+      "hdriPath": "",
+      "showAsBackground": false,
+      "intensity": 1
+     }
+    },
+    "Scene Config": {
+     "showGrid": false,
+     "backgroundColor": "#282828",
+     "backgroundImage": "",
+     "backgroundRenderMode": "tiled",
+     "models": []
+    },
+    "Model Config": {
+     "upDirection": "original",
+     "materialMode": "original",
+     "showSkeleton": false,
+     "gizmo": {
+      "enabled": false,
+      "mode": "translate",
+      "position": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "rotation": {
+       "x": 0,
+       "y": 0,
+       "z": 0
+      },
+      "scale": {
+       "x": 1,
+       "y": 1,
+       "z": 1
+      }
+     }
+    }
+   },
+   "widgets_values": [
+    "",
+    1024,
+    1024
+   ]
+  },
+  {
+   "id": 50,
+   "type": "MarkdownNote",
+   "pos": [
+    0,
+    1300
+   ],
+   "size": [
+    820,
+    680
+   ],
+   "flags": {},
+   "order": 50,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## 1 \u00b7 Your inputs\n**Mesh:** pick a GLB in **Load 3D**. **UV unwrap** gives it UVs:\n- `comfy_gpu`: fast, the default.\n- `xatlas`: slower; the developer says it often looks better, since better UVs = better texture.\n- `keep_existing`: your mesh already has clean UVs (Blender, Maya).\n\n**Big mesh? \"413 Request Entity Too Large\"** means the file is over ComfyUI's 100 MB upload limit. Either copy the GLB into `ComfyUI/input/3d/` and press **R**, or add `--max-upload-size 2048` to `Start ComfyUI.bat` and fully restart (EZi app too).\n\n**Reference image:** a front view of the object, ideally the image you generated the mesh from.\n**BiRefNet** removes the background, so any image works. Prepare is set to `mask_polarity = foreground` to match.\n\n**Text and logos** only come out clean if they are sharp in the reference, ideally on the front."
+   ],
+   "title": "Read me \u00b7 Inputs",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 51,
+   "type": "MarkdownNote",
+   "pos": [
+    880,
+    1300
+   ],
+   "size": [
+    400,
+    560
+   ],
+   "flags": {},
+   "order": 51,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## 2 \u00b7 GGUF models\n| File | Folder |\n|---|---|\n| `flux-2-klein-base-9b-Q4_0.gguf` (5.6 GB) | `models/diffusion_models` |\n| `Qwen3-8B-Q4_K_M.gguf` (~5 GB) | `models/text_encoders` |\n| `flux2-vae.safetensors` | `models/vae` |\n| UltraTex LoRAs + decoder | same as the fp8 workflows |\n| `birefnet.safetensors` | `models/background_removal` |\n\nKlein GGUF: `unsloth/FLUX.2-klein-base-9B-GGUF`. **Must be the BASE model.**\nQwen GGUF: `unsloth/Qwen3-8B-GGUF`. **Q4_K_M** because the text encoder only encodes an **empty prompt**, so a smaller quant costs practically nothing and saves VRAM. Have `Qwen3-8B-Q6_K.gguf`? Just pick it here.\nNeeds **ComfyUI-GGUF** (city96) for the two GGUF loaders."
+   ],
+   "title": "Read me \u00b7 Models",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 52,
+   "type": "MarkdownNote",
+   "pos": [
+    1340,
+    1300
+   ],
+   "size": [
+    420,
+    560
+   ],
+   "flags": {},
+   "order": 52,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## 3 \u00b7 Prepare\nRenders the normal views and lines your reference up with the front camera.\n\n**Check the three previews before a long run:**\n- **Normal views:** your mesh from all sides.\n- **Aligned reference:** the object should fill the silhouette **edge to edge**.\n- **Aligned mask:** white object on black.\n\nSmall or shifted? Check `mask_polarity`: **foreground** for BiRefNet, **background** if you use Load Image's own MASK instead."
+   ],
+   "title": "Read me \u00b7 Prepare",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 53,
+   "type": "MarkdownNote",
+   "pos": [
+    1820,
+    1300
+   ],
+   "size": [
+    820,
+    620
+   ],
+   "flags": {},
+   "order": 53,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## 4 \u00b7 Generate views\n**All quality and speed settings live on the two Generate nodes.**\n\n| Setting | Albedo | MR | Notes |\n|---|---|---|---|\n| `view_resolution` | **1024** | 1024 | 6 GB: 1024 \u00b7 8 GB: up to 1536\u20132048 |\n| `view_count` | **12** | **6** | 12 = 6 + a guided 45\u00b0 pass |\n| `steps` | **4** | 4 | dev: 4 is enough, 8 is better |\n| `extra_angle_mode` | guided | \u2013 | 45\u00b0 pass starts from pass 1 |\n\n- **Same seed** on both Generate nodes.\n- **Steps are the speed lever.** Time scales with steps. Compare 4 / 8 / 25 on your asset and judge the back and sides, not just the front.\n- MR maps are low-detail, so **6 views** are enough there.\n- `tiled_decode` **on** for low VRAM."
+   ],
+   "title": "Read me \u00b7 Generate",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 54,
+   "type": "MarkdownNote",
+   "pos": [
+    2700,
+    1300
+   ],
+   "size": [
+    840,
+    560
+   ],
+   "flags": {},
+   "order": 54,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "## 5 \u00b7 Bake & save\nBakes albedo and MR views onto the **one shared UV layout**. Saves to `output/ultratex/`:\n- textured **GLB** (+ Preview 3D)\n- **base color**, **roughness** and **metallic** maps as separate PNGs\n\n| Setting | Value |\n|---|---|\n| `texture_size` | 2048 (4096 for hero assets, same VRAM, slower bake) |\n| `fill_unseen` | on: estimates hidden areas (no new detail) |\n| `blend_mode` | detail_preserving |\n| `repair_mode` | normal_aware_surface |\n\nFaceted face? Try `normal_mode = preserve` vs `smooth` in Prepare."
+   ],
+   "title": "Read me \u00b7 Bake",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 55,
+   "type": "MarkdownNote",
+   "pos": [
+    0,
+    -820
+   ],
+   "size": [
+    1760,
+    780
+   ],
+   "flags": {},
+   "order": 55,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "# UltraTex \u00b7 Low VRAM (GGUF) \u00b7 6\u20138 GB GPUs\n**PixelArtistry** \u00b7 GGUF node pack by **MostAadTech** (UltraTex-ComfyUI-nodes, MIT) \u00b7 original nodes by **visualbruno** \u00b7 model by the **UltraTex** team\n\nThe same UltraTex texturing, rebuilt for small GPUs: a **Q4 GGUF** Klein base model, a Q4_K_M GGUF Qwen3 text encoder, sparse attention, tiled decoding and disk-backed caching.\n\n### Reported VRAM and speed (not measured by PixelArtistry yet)\n| Card | Setting | Result |\n|---|---|---|\n| 6 GB GPU (community test) | 1024 | runs |\n| RTX 5050 Laptop 8 GB (MostAadTech) | 1536, 12 views | **6.8 GB** dedicated VRAM |\n| unknown card (community test) | 2048, 4 steps | ~6 min |\n\nSpeed depends a lot on your card: two 8 GB cards can differ several times over.\n\n### How to use\n1. **Group 1:** pick your GLB and your reference image.\n2. Press **Run**. First check the previews in group 3.\n3. Results in `output/ultratex/`, and the GLB in **Preview 3D**.\n\n### Requirements\n- **UltraTex-ComfyUI-nodes** by MostAadTech: github.com/Mstafa-awad/UltraTex-ComfyUI-nodes (built for commit `b98f4f4`; the pack changes often).\n- **ComfyUI-GGUF** by city96.\n- **Triton** (`triton-windows` on Windows). This pack has **no fallback** without it.\n- A recent ComfyUI (native MESH, Load 3D, BiRefNet nodes).\n- The original visualbruno pack is **not** required. Both packs can be installed side by side.\n\n### License\n- UltraTex code and nodes: MIT.\n- FLUX.2 Klein base 9B: FLUX Non-Commercial License v2.1. BFL claims no ownership of your outputs and allows using them for any purpose, including commercial, except training a competing model. Running the model itself is licensed for non-commercial use, so check https://bfl.ai/licensing before client or production work.\n"
+   ],
+   "title": "START HERE \u00b7 UltraTex Low VRAM (GGUF)",
+   "color": "#223",
+   "bgcolor": "#335"
+  }
+ ],
+ "links": [
+  [
+   1,
+   1,
+   0,
+   2,
+   0,
+   "FILE_3D"
+  ],
+  [
+   4,
+   30,
+   0,
+   31,
+   0,
+   "BACKGROUND_REMOVAL"
+  ],
+  [
+   5,
+   3,
+   0,
+   31,
+   1,
+   "IMAGE"
+  ],
+  [
+   8,
+   5,
+   0,
+   9,
+   1,
+   "MODEL"
+  ],
+  [
+   9,
+   6,
+   0,
+   9,
+   2,
+   "VAE"
+  ],
+  [
+   10,
+   7,
+   0,
+   8,
+   0,
+   "CLIP"
+  ],
+  [
+   11,
+   8,
+   0,
+   9,
+   3,
+   "CONDITIONING"
+  ],
+  [
+   14,
+   9,
+   0,
+   11,
+   0,
+   "UTX_VIEW_COLLECTION"
+  ],
+  [
+   15,
+   9,
+   2,
+   10,
+   0,
+   "IMAGE"
+  ],
+  [
+   21,
+   42,
+   0,
+   43,
+   0,
+   "IMAGE"
+  ],
+  [
+   23,
+   5,
+   0,
+   20,
+   1,
+   "MODEL"
+  ],
+  [
+   24,
+   6,
+   0,
+   20,
+   2,
+   "VAE"
+  ],
+  [
+   25,
+   8,
+   0,
+   20,
+   3,
+   "CONDITIONING"
+  ],
+  [
+   27,
+   20,
+   2,
+   21,
+   0,
+   "IMAGE"
+  ],
+  [
+   35,
+   2,
+   0,
+   44,
+   0,
+   "MESH"
+  ],
+  [
+   38,
+   44,
+   0,
+   45,
+   0,
+   "MESH"
+  ],
+  [
+   39,
+   3,
+   0,
+   45,
+   1,
+   "IMAGE"
+  ],
+  [
+   40,
+   31,
+   0,
+   45,
+   2,
+   "MASK"
+  ],
+  [
+   41,
+   45,
+   0,
+   9,
+   0,
+   "UTX_PREPARED_SOURCE_V23"
+  ],
+  [
+   42,
+   45,
+   2,
+   40,
+   0,
+   "IMAGE"
+  ],
+  [
+   43,
+   45,
+   3,
+   41,
+   0,
+   "IMAGE"
+  ],
+  [
+   44,
+   45,
+   4,
+   42,
+   0,
+   "MASK"
+  ],
+  [
+   47,
+   45,
+   0,
+   20,
+   0,
+   "UTX_PREPARED_SOURCE_V23"
+  ],
+  [
+   48,
+   7,
+   0,
+   47,
+   0,
+   "CLIP"
+  ],
+  [
+   49,
+   47,
+   0,
+   20,
+   4,
+   "CONDITIONING"
+  ],
+  [
+   50,
+   47,
+   0,
+   9,
+   4,
+   "CONDITIONING"
+  ],
+  [
+   51,
+   9,
+   0,
+   48,
+   1,
+   "UTX_VIEW_COLLECTION"
+  ],
+  [
+   52,
+   9,
+   3,
+   48,
+   0,
+   "UTX_TEXTURE_SETUP"
+  ],
+  [
+   53,
+   20,
+   0,
+   48,
+   3,
+   "UTX_VIEW_COLLECTION"
+  ],
+  [
+   54,
+   20,
+   3,
+   48,
+   2,
+   "UTX_TEXTURE_SETUP"
+  ],
+  [
+   55,
+   48,
+   0,
+   13,
+   0,
+   "MESH"
+  ],
+  [
+   56,
+   48,
+   1,
+   14,
+   0,
+   "IMAGE"
+  ],
+  [
+   57,
+   48,
+   3,
+   23,
+   0,
+   "IMAGE"
+  ],
+  [
+   58,
+   48,
+   2,
+   22,
+   0,
+   "IMAGE"
+  ],
+  [
+   59,
+   48,
+   4,
+   49,
+   0,
+   "FILE_3D_GLB"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "1 \u00b7 Inputs",
+   "bounding": [
+    0,
+    0,
+    820,
+    1260
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "2 \u00b7 GGUF models",
+   "bounding": [
+    880,
+    0,
+    400,
+    1260
+   ],
+   "color": "#555555",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "3 \u00b7 Prepare",
+   "bounding": [
+    1340,
+    0,
+    420,
+    1260
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 4,
+   "title": "4 \u00b7 Generate views",
+   "bounding": [
+    1820,
+    0,
+    820,
+    1260
+   ],
+   "color": "#4e7a3f",
+   "font_size": 24,
+   "flags": {}
+  },
+  {
+   "id": 5,
+   "title": "5 \u00b7 Bake, save & 3D preview",
+   "bounding": [
+    2700,
+    0,
+    840,
+    1260
+   ],
+   "color": "#a1683a",
+   "font_size": 24,
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.5,
+   "offset": [
+    150,
+    250
+   ]
+  },
+  "frontendVersion": "1.53.10"
+ },
+ "version": 0.4
+}

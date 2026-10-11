@@ -1,0 +1,31 @@
+# Notes, prompts and handoff files (never commit)
+notes/
+NOTES*
+notes*.md
+notes*.txt
+HANDOFF*
+handoff*
+PROMPT*
+prompt*
+CLAUDE.md
+.claude/
+*.local.md
+
+# Test assets and models (too big, not ours to redistribute)
+*.glb
+*.gltf
+*.obj
+*.ply
+*.blend
+*.blend1
+*.safetensors
+*.gguf
+*.pt
+*.part
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
