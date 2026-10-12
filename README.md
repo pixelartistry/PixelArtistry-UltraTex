@@ -34,7 +34,7 @@ Put the unzipped folder next to `python_embeded` and run `Install-UltraTex.bat` 
 - Scans `ComfyUI\models` **and** `extra_model_paths.yaml`, so linked model folders (e.g. from Easy-Models-Linker) count.
 - Lists the missing models and **asks** before downloading anything.
 - Optional low-VRAM version: asks Y/N.
-- Copies the workflows into the ComfyUI workflow sidebar (workflow 3 only if you said Y to the low-VRAM version).
+- Copies the workflows into `ComfyUI\user\default\workflows\PixelArtistry`, so they show up in the workflow sidebar in the **PixelArtistry** folder as `PixelArtistry_UltraTex_01_Standard_6views_PBR`, `..._02_Advanced_10views_PBR` and `..._03_LowVRAM_GGUF` (workflow 3 only if you said Y to the low-VRAM version). Existing files are kept.
 - Safe to re-run: existing files are skipped, unfinished downloads resume.
 
 **Requirements:** Windows, NVIDIA GPU, a recent ComfyUI (Oct 2026), ~25 GB disk for the fp8 models, ~11 GB extra for the GGUF version.
@@ -118,7 +118,7 @@ Extra models:
 > [!NOTE]
 > Install this node pack only **once**. Two copies (e.g. one cloned under its repo name, one as `comfyui_ultratex_modular`) conflict.
 
-**6. Workflows** - drag the JSONs from the `workflows` folder onto the ComfyUI canvas, or copy them into `ComfyUI\user\default\workflows` to see them in the sidebar.
+**6. Workflows** - drag the JSONs from the `workflows` folder onto the ComfyUI canvas, or copy them into `ComfyUI\user\default\workflows\PixelArtistry` (create the folder) to see them in the sidebar's **PixelArtistry** folder.
 
 **7. Restart ComfyUI.** On the first run, check the console for `UltraTex LoRA ... layers patched of N` for **both** LoRAs.
 

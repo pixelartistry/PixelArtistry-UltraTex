@@ -307,7 +307,8 @@ rem ---------------------------------------------------------------- 7. workflow
 :workflows
 echo.
 echo  [6/7] Adding workflows to the ComfyUI workflow browser...
-set "WF=%COMFY%\user\default\workflows"
+rem Same place as the other PixelArtistry workflows: sidebar folder "PixelArtistry".
+set "WF=%COMFY%\user\default\workflows\PixelArtistry"
 if not exist "%WF%" mkdir "%WF%"
 rem PixelArtistry workflows ship in a "workflows" folder next to this installer.
 if exist "%~dp0workflows\UltraTex - 1 Standard 6 views PBR.json" (
@@ -315,18 +316,18 @@ if exist "%~dp0workflows\UltraTex - 1 Standard 6 views PBR.json" (
     goto :pa_workflows
 )
 echo        PixelArtistry workflows not found next to the installer - adding the developer's examples.
->>"%WARN%" echo  - PixelArtistry workflows missing: unzip the whole UltraTex-PixelArtistry folder into Add-Ons and run the installer from there.
+>>"%WARN%" echo  - PixelArtistry workflows missing: unzip the whole PixelArtistry-UltraTex-main folder into Add-Ons and run the installer from there.
 set "PA_WF="
 set "EX=%NODE_DIR%\example_workflows"
-call :copy_wf "UltraTex PBR Flux2Klein9B at 1024px.json" "UltraTex - Standard 6 views PBR 1024px.json"
-call :copy_wf "UltraTex PBR Flux2Klein9B at 2048px.json" "UltraTex - Standard 6 views PBR 2048px.json"
-call :copy_wf "UltraTex Albedo Flux2Klein9B.json"        "UltraTex - Advanced 10 views albedo.json"
+call :copy_wf "UltraTex PBR Flux2Klein9B at 1024px.json" "PixelArtistry_UltraTex_Example_PBR_1024.json"
+call :copy_wf "UltraTex PBR Flux2Klein9B at 2048px.json" "PixelArtistry_UltraTex_Example_PBR_2048.json"
+call :copy_wf "UltraTex Albedo Flux2Klein9B.json"        "PixelArtistry_UltraTex_Example_10views_Albedo.json"
 goto :wf_done
 :pa_workflows
 set "PA_WF=1"
-call :copy_wf "UltraTex - 1 Standard 6 views PBR.json"   "UltraTex - 1 Standard 6 views PBR.json"
-call :copy_wf "UltraTex - 2 Advanced 10 views PBR.json"  "UltraTex - 2 Advanced 10 views PBR.json"
-if defined LOWVRAM call :copy_wf "UltraTex - 3 Low VRAM GGUF.json" "UltraTex - 3 Low VRAM GGUF.json"
+call :copy_wf "UltraTex - 1 Standard 6 views PBR.json"   "PixelArtistry_UltraTex_01_Standard_6views_PBR.json"
+call :copy_wf "UltraTex - 2 Advanced 10 views PBR.json"  "PixelArtistry_UltraTex_02_Advanced_10views_PBR.json"
+if defined LOWVRAM call :copy_wf "UltraTex - 3 Low VRAM GGUF.json" "PixelArtistry_UltraTex_03_LowVRAM_GGUF.json"
 :wf_done
 
 rem ---------------------------------------------------------------- summary
@@ -345,9 +346,9 @@ echo.
 echo   Next steps:
 echo   1. Restart ComfyUI.
 if defined PA_WF (
-    echo   2. Open a workflow from the sidebar: "UltraTex - 1 Standard 6 views PBR".
+    echo   2. Workflows sidebar, folder PixelArtistry: "PixelArtistry_UltraTex_01_Standard_6views_PBR".
 ) else (
-    echo   2. Open a workflow from the sidebar: "UltraTex - Standard 6 views PBR 1024px".
+    echo   2. Workflows sidebar, folder PixelArtistry: "PixelArtistry_UltraTex_Example_PBR_1024".
 )
 echo   3. Pick YOUR mesh in "UltraTex Load Mesh" and YOUR reference image
 echo      ^(any background works, ideally the image the mesh was made from^).
