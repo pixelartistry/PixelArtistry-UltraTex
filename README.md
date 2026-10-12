@@ -18,7 +18,7 @@ Textures any untextured mesh from **one reference image**: readable text and log
 
 1. Install [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install) if you don't have it yet. My **[installation guide](https://go.pixel-artistry.com/Trellis2InstallationGuide)** walks you through every step.
 2. On this page: **Code → Download ZIP**.
-3. Unzip it into `ComfyUI-Easy-Install\Add-Ons\`. You get `Add-Ons\PixelArtistry-UltraTex-main\` with `Install-UltraTex.bat` and the `workflows` folder inside. Keep them together.
+3. Unzip it into `ComfyUI-Easy-Install\Add-Ons\`. You get `Add-Ons\PixelArtistry-UltraTex-main\` with `Install-UltraTex.bat` inside. (The workflows are built into the installer, so the `.bat` on its own directly in `Add-Ons` works too.)
 4. Close ComfyUI.
 5. Double-click `Install-UltraTex.bat`.
 
@@ -34,7 +34,7 @@ Put the unzipped folder next to `python_embeded` and run `Install-UltraTex.bat` 
 - Scans `ComfyUI\models` **and** `extra_model_paths.yaml`, so linked model folders (e.g. from Easy-Models-Linker) count.
 - Lists the missing models and **asks** before downloading anything.
 - Optional low-VRAM version: asks Y/N.
-- Copies the workflows into `ComfyUI\user\default\workflows\PixelArtistry`, so they show up in the workflow sidebar in the **PixelArtistry** folder as `PixelArtistry_UltraTex_01_Standard_6views_PBR`, `..._02_Advanced_10views_PBR` and `..._03_LowVRAM_GGUF` (workflow 3 only if you said Y to the low-VRAM version). Existing files are kept.
+- Puts my 3 workflows (built into the installer) into `ComfyUI\user\default\workflows\PixelArtistry`, so they show up in the workflow sidebar in the **PixelArtistry** folder as `PixelArtistry_UltraTex_01_Standard_6views_PBR`, `..._02_Advanced_10views_PBR` and `..._03_LowVRAM_GGUF` (workflow 3 only if you said Y to the low-VRAM version). Existing files are kept.
 - Safe to re-run: existing files are skipped, unfinished downloads resume.
 
 **Requirements:** Windows, NVIDIA GPU, a recent ComfyUI (Oct 2026), ~25 GB disk for the fp8 models, ~11 GB extra for the GGUF version.

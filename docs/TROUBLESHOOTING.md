@@ -43,9 +43,11 @@ The installer prints the source URL and the target path for every failed downloa
 
 For the gated Klein fp8 model: click "Agree" on the [model page](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8) with the same account your token belongs to, and use a **Read** token.
 
-## "PixelArtistry workflows missing" warning
+## Workflows don't show up in the sidebar
 
-The `.bat` was run without the `workflows` folder next to it, so the installer added the developer's example workflows instead. Unzip the **whole** repo folder into `Add-Ons` and run the installer from inside that folder.
+The installer puts them into `ComfyUI\user\default\workflows\PixelArtistry`. Restart ComfyUI or press **R** to refresh the sidebar. If you edited a workflow, a re-run keeps your version: delete the file there to get the original back.
+
+Ran an older version of the installer? It may have left extra copies at the top level of the sidebar (`UltraTex - ...` or `PixelArtistry_UltraTex_Example_...`). Those are the node developer's example workflows, you can delete them.
 
 ## "ComfyUI seems to be running"
 
