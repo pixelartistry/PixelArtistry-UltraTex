@@ -30,6 +30,8 @@ The object must fill the mesh silhouette **edge to edge**. If it's small or shif
 
 The low-VRAM node pack isn't installed. Rerun `Install-UltraTex.bat` and answer **Y** to the low-VRAM question. It also needs [ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF).
 
+Only the bake node is red (`UTXBakeTextureV26`)? That's workflow 3 from an older installer: the current node pack replaced it with **UTX Fast Surface Texture Baker**. Rerun the installer, it updates both the pack and the workflow.
+
 ## Triton test failed
 
 - **Workflows 1/2** still work: they fall back to slower attention. If a sampler errors, set `attention = comfy_default` (slower, same result).
@@ -45,7 +47,7 @@ For the gated Klein fp8 model: click "Agree" on the [model page](https://hugging
 
 ## Workflows don't show up in the sidebar
 
-The installer puts them into `ComfyUI\user\default\workflows\PixelArtistry`. Restart ComfyUI or press **R** to refresh the sidebar. If you edited a workflow, a re-run keeps your version: delete the file there to get the original back.
+The installer puts them into `ComfyUI\user\default\workflows\PixelArtistry`. Restart ComfyUI or press **R** to refresh the sidebar. A re-run replaces a workflow that differs from the current version and keeps your old file as `.bak` in the same folder. Edited a workflow you want to keep? Save it under a different name.
 
 Ran an older version of the installer? It may have left extra copies at the top level of the sidebar (`UltraTex - ...` or `PixelArtistry_UltraTex_Example_...`). Those are the node developer's example workflows, you can delete them.
 

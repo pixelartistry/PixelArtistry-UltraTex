@@ -1367,7 +1367,7 @@
   },
   {
    "id": 48,
-   "type": "UTXBakeTextureV26",
+   "type": "UTXFastSurfaceTextureBaker",
    "pos": [
     2720,
     80
@@ -1405,10 +1405,17 @@
    ],
    "outputs": [
     {
-     "name": "MESH",
+     "name": "mesh",
      "type": "MESH",
      "links": [
       55
+     ]
+    },
+    {
+     "name": "glb",
+     "type": "FILE_3D_GLB",
+     "links": [
+      59
      ]
     },
     {
@@ -1433,37 +1440,30 @@
      ]
     },
     {
-     "name": "FILE_3D_GLB",
-     "type": "FILE_3D_GLB",
-     "links": [
-      59
-     ]
-    },
-    {
-     "name": "unseen_before_fill",
+     "name": "observed_coverage",
      "type": "MASK",
      "links": null
     },
     {
-     "name": "projection_confidence",
-     "type": "MASK",
+     "name": "report",
+     "type": "STRING",
      "links": null
     }
    ],
    "properties": {
-    "Node name for S&R": "UTXBakeTextureV26"
+    "Node name for S&R": "UTXFastSurfaceTextureBaker"
    },
    "widgets_values": [
     2048,
-    true,
-    "detail_preserving",
-    "normal_aware_surface"
+    "surface_fill",
+    "fast_detail",
+    "auto"
    ],
    "widgets_values_named": {
-    "texture_size": 4096,
-    "fill_unseen": true,
-    "blend_mode": "detail_preserving",
-    "repair_mode": "normal_aware_surface"
+    "texture_size": 2048,
+    "completion": "surface_fill",
+    "upscale_mode": "fast_detail",
+    "device": "auto"
    }
   },
   {
@@ -1726,7 +1726,7 @@
    "outputs": [],
    "properties": {},
    "widgets_values": [
-    "## 5 \u00b7 Bake & save\nBakes albedo and MR views onto the **one shared UV layout**. Saves to `output/ultratex/`:\n- textured **GLB** (+ Preview 3D)\n- **base color**, **roughness** and **metallic** maps as separate PNGs\n\n| Setting | Value |\n|---|---|\n| `texture_size` | 2048 (4096 for hero assets, same VRAM, slower bake) |\n| `fill_unseen` | on: estimates hidden areas (no new detail) |\n| `blend_mode` | detail_preserving |\n| `repair_mode` | normal_aware_surface |\n\nFaceted face? Try `normal_mode = preserve` vs `smooth` in Prepare."
+    "## 5 \u00b7 Bake & save\nBakes albedo and MR views onto the **one shared UV layout**. Saves to `output/ultratex/`:\n- textured **GLB** (+ Preview 3D)\n- **base color**, **roughness** and **metallic** maps as separate PNGs\n\n| Setting | Value |\n|---|---|\n| `texture_size` | 2048 (4096 for hero assets, slower bake) |\n| `completion` | surface_fill: fills areas no camera saw along the surface (no new detail) |\n| `upscale_mode` | fast_detail: keeps the finest base color detail sharp |\n| `device` | auto (GPU, falls back to CPU if VRAM is short) |\n\nFaceted face? Try `normal_mode = preserve` vs `smooth` in Prepare."
    ],
    "title": "Read me \u00b7 Bake",
    "color": "#432",
@@ -1750,7 +1750,7 @@
    "outputs": [],
    "properties": {},
    "widgets_values": [
-    "# UltraTex \u00b7 Low VRAM (GGUF) \u00b7 6\u20138 GB GPUs\n**PixelArtistry** \u00b7 GGUF node pack by **MostAadTech** (UltraTex-ComfyUI-nodes, MIT) \u00b7 original nodes by **visualbruno** \u00b7 model by the **UltraTex** team\n\nThe same UltraTex texturing, rebuilt for small GPUs: a **Q4 GGUF** Klein base model, a Q4_K_M GGUF Qwen3 text encoder, sparse attention, tiled decoding and disk-backed caching.\n\n### Reported VRAM and speed (not measured by PixelArtistry yet)\n| Card | Setting | Result |\n|---|---|---|\n| 6 GB GPU (community test) | 1024 | runs |\n| RTX 5050 Laptop 8 GB (MostAadTech) | 1536, 12 views | **6.8 GB** dedicated VRAM |\n| unknown card (community test) | 2048, 4 steps | ~6 min |\n\nSpeed depends a lot on your card: two 8 GB cards can differ several times over.\n\n### How to use\n1. **Group 1:** pick your GLB and your reference image.\n2. Press **Run**. First check the previews in group 3.\n3. Results in `output/ultratex/`, and the GLB in **Preview 3D**.\n\n### Requirements\n- **UltraTex-ComfyUI-nodes** by MostAadTech: github.com/Mstafa-awad/UltraTex-ComfyUI-nodes (built for commit `b98f4f4`; the pack changes often).\n- **ComfyUI-GGUF** by city96.\n- **Triton** (`triton-windows` on Windows). This pack has **no fallback** without it.\n- A recent ComfyUI (native MESH, Load 3D, BiRefNet nodes).\n- The original visualbruno pack is **not** required. Both packs can be installed side by side.\n\n### License\n- UltraTex code and nodes: MIT.\n- FLUX.2 Klein base 9B: FLUX Non-Commercial License v2.1. BFL claims no ownership of your outputs and allows using them for any purpose, including commercial, except training a competing model. Running the model itself is licensed for non-commercial use, so check https://bfl.ai/licensing before client or production work.\n"
+    "# UltraTex \u00b7 Low VRAM (GGUF) \u00b7 6\u20138 GB GPUs\n**PixelArtistry** \u00b7 GGUF node pack by **MostAadTech** (UltraTex-ComfyUI-nodes, GPL-3.0) \u00b7 original nodes by **visualbruno** \u00b7 model by the **UltraTex** team\n\nThe same UltraTex texturing, rebuilt for small GPUs: a **Q4 GGUF** Klein base model, a Q4_K_M GGUF Qwen3 text encoder, sparse attention, tiled decoding and disk-backed caching.\n\n### Reported VRAM and speed (not measured by PixelArtistry yet)\n| Card | Setting | Result |\n|---|---|---|\n| 6 GB GPU (community test) | 1024 | runs |\n| RTX 5050 Laptop 8 GB (MostAadTech) | 1536, 12 views | **6.8 GB** dedicated VRAM |\n| unknown card (community test) | 2048, 4 steps | ~6 min |\n\nSpeed depends a lot on your card: two 8 GB cards can differ several times over.\n\n### How to use\n1. **Group 1:** pick your GLB and your reference image.\n2. Press **Run**. First check the previews in group 3.\n3. Results in `output/ultratex/`, and the GLB in **Preview 3D**.\n\n### Requirements\n- **UltraTex-ComfyUI-nodes** by MostAadTech: github.com/Mstafa-awad/UltraTex-ComfyUI-nodes (built for commit `8d434a2`; the pack changes often).\n- **ComfyUI-GGUF** by city96.\n- **Triton** (`triton-windows` on Windows). This pack has **no fallback** without it.\n- A recent ComfyUI (native MESH, Load 3D, BiRefNet nodes).\n- The original visualbruno pack is **not** required. Both packs can be installed side by side.\n\n### License\n- UltraTex code and visualbruno's nodes: MIT. MostAadTech's node pack: GPL-3.0 (since v2.0; MIT before).\n- FLUX.2 Klein base 9B: FLUX Non-Commercial License v2.1. BFL claims no ownership of your outputs and allows using them for any purpose, including commercial, except training a competing model. Running the model itself is licensed for non-commercial use, so check https://bfl.ai/licensing before client or production work.\n"
    ],
    "title": "START HERE \u00b7 UltraTex Low VRAM (GGUF)",
    "color": "#223",
@@ -2009,7 +2009,7 @@
   [
    56,
    48,
-   1,
+   2,
    14,
    0,
    "IMAGE"
@@ -2017,7 +2017,7 @@
   [
    57,
    48,
-   3,
+   4,
    23,
    0,
    "IMAGE"
@@ -2025,7 +2025,7 @@
   [
    58,
    48,
-   2,
+   3,
    22,
    0,
    "IMAGE"
@@ -2033,7 +2033,7 @@
   [
    59,
    48,
-   4,
+   1,
    49,
    0,
    "FILE_3D_GLB"

@@ -28,13 +28,13 @@ Put the unzipped folder next to `python_embeded` and run `Install-UltraTex.bat` 
 
 ### What the installer does
 
-- Installs the nodes at the tested, pinned versions: visualbruno `8137da5`, MostAadTech `b98f4f4`.
+- Installs the nodes at the tested, pinned versions: visualbruno `8137da5`, MostAadTech `8d434a2`.
 - Installs the Python packages.
 - Checks Triton with a real test: it runs the sparse-attention kernel UltraTex uses on your GPU once.
 - Scans `ComfyUI\models` **and** `extra_model_paths.yaml`, so linked model folders (e.g. from Easy-Models-Linker) count.
 - Lists the missing models and **asks** before downloading anything.
 - Optional low-VRAM version: asks Y/N.
-- Puts my 3 workflows (built into the installer) into `ComfyUI\user\default\workflows\PixelArtistry`, so they show up in the workflow sidebar in the **PixelArtistry** folder as `PixelArtistry_UltraTex_01_Standard_6views_PBR`, `..._02_Advanced_10views_PBR` and `..._03_LowVRAM_GGUF` (workflow 3 only if you said Y to the low-VRAM version). Existing files are kept.
+- Puts my 3 workflows (built into the installer) into `ComfyUI\user\default\workflows\PixelArtistry`, so they show up in the workflow sidebar in the **PixelArtistry** folder as `PixelArtistry_UltraTex_01_Standard_6views_PBR`, `..._02_Advanced_10views_PBR` and `..._03_LowVRAM_GGUF` (workflow 3 only if you said Y to the low-VRAM version). On a re-run, a workflow that differs from the current one is replaced, and your old file is kept next to it as `.bak`.
 - Safe to re-run: existing files are skipped, unfinished downloads resume.
 
 **Requirements:** Windows, NVIDIA GPU, a recent ComfyUI (Oct 2026), ~25 GB disk for the fp8 models, ~11 GB extra for the GGUF version.
@@ -97,7 +97,7 @@ It must be Klein **base** 9B. The normal (distilled) Klein 9B doesn't work with 
 cd ComfyUI\custom_nodes
 git clone https://github.com/Mstafa-awad/UltraTex-ComfyUI-nodes comfyui_ultratex_modular
 cd comfyui_ultratex_modular
-git checkout b98f4f4
+git checkout 8d434a2
 ```
 
 Then from the folder that contains `python_embeded`:
@@ -175,7 +175,7 @@ RTX 5080 16 GB, 4.1M-face character, 1024 views. Measured by me:
 
 - **Workflow 1, 25 steps:** 432 s total on the first run (incl. warm-up). Albedo 203 s, MR 89 s, GPU UV unwrap of 4.1M faces 17.7 s.
 - **Workflow 2:** the second pass adds ~32 s (11 steps). Surface seen by a camera: 86.4% → 92.8%.
-- **Workflow 3** (Klein Q4_0 + Qwen3 8B Q4_K_M, 4 steps, 12+6 views): 229 s. Klein 5.5 GB + text encoder 6.8 GB loaded on a 16 GB card.
+- **Workflow 3** (Klein Q4_0 + Qwen3 8B Q4_K_M, 4 steps, 12+6 views): 229 s with node pack `b98f4f4`; Klein 5.5 GB + text encoder 6.8 GB loaded on a 16 GB card. With the current pinned version `8d434a2` and its new Fast Surface Texture Baker: 240 s, first run after a ComfyUI restart.
 
 Reported by the community (not measured by me):
 
@@ -198,7 +198,7 @@ More details and fixes: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 - UltraTex paper (SIGGRAPH Asia 2026): [yiboz2001.github.io/UltraTex](https://yiboz2001.github.io/UltraTex/)
 - UltraTex weights: [ModelScope Yibo-Zhang/UltraTex](https://www.modelscope.ai/models/Yibo-Zhang/UltraTex)
 - [visualbruno/ComfyUI-UltraTex](https://github.com/visualbruno/ComfyUI-UltraTex) - nodes for workflows 1 and 2
-- [MostAadTech/UltraTex-ComfyUI-nodes](https://github.com/Mstafa-awad/UltraTex-ComfyUI-nodes) - low-VRAM nodes for workflow 3
+- [MostAadTech/UltraTex-ComfyUI-nodes](https://github.com/Mstafa-awad/UltraTex-ComfyUI-nodes) - low-VRAM nodes for workflow 3 (GPL-3.0)
 - [FLUX.2 Klein base 9B](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9B) by Black Forest Labs
 - GGUFs: [unsloth/FLUX.2-klein-base-9B-GGUF](https://huggingface.co/unsloth/FLUX.2-klein-base-9B-GGUF) and [unsloth/Qwen3-8B-GGUF](https://huggingface.co/unsloth/Qwen3-8B-GGUF)
 - [ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF) by city96
@@ -215,7 +215,7 @@ More details and fixes: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 
 > [!IMPORTANT]
 > - **My files in this repo** (installer, workflow layouts and notes): [MIT](LICENSE).
-> - **UltraTex code and both node packs:** MIT.
+> - **UltraTex code and visualbruno's node pack:** MIT. **MostAadTech's node pack:** GPL-3.0 (since v2.0, MIT before).
 > - **The model FLUX.2 Klein base 9B** (and its GGUF versions) is under the **FLUX Non-Commercial License v2.1** by Black Forest Labs.
 > - **Your textures are yours:** BFL claims no ownership of outputs. The license lets you use outputs for any purpose, including commercial, except training a model that competes with FLUX.
 > - **Running the model itself** is licensed for non-commercial use. For client or production work, check [bfl.ai/licensing](https://bfl.ai/licensing) first. This is not legal advice.
