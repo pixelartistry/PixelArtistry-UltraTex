@@ -55,6 +55,10 @@ Ran an older version of the installer? It may have left extra copies at the top 
 
 Close ComfyUI first: pip can't update packages while ComfyUI has them loaded. The installer checks the `--port` from `Start ComfyUI.bat` (8188 if there's none).
 
+## "insufficient disk space" or "spill budget reached" (workflow 3)
+
+The low-VRAM node pack stores intermediate results in `ComfyUI\output\.ultratex_cache` and never cleans it up. It grows with every run (on my machine 8.6 GB after a few days of testing). Close ComfyUI, delete the `.ultratex_cache` folder and start again. It only holds intermediates and is rebuilt as needed.
+
 ## Fast re-runs
 
 ComfyUI reuses cached results when you only change later settings. Changing only the bake settings, for example, doesn't repaint the views.

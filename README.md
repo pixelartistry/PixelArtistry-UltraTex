@@ -162,10 +162,11 @@ The same UltraTex texturing rebuilt for 6-8 GB GPUs by MostAadTech: Q4 GGUF Klei
 
 | Setting | Albedo | MR | Notes |
 |---|---|---|---|
-| `view_resolution` | 1024 | 1024 | 6 GB: 1024 · 8 GB: up to 1536-2048 (reported by MostAadTech) |
+| `view_resolution` | 1024 | 1024 | 6 GB: 1024 · 8 GB: up to 1536-2048 (reported by MostAadTech) · 16 GB: **2048** on both nodes, noticeably sharper hair, face and small details (tested by me) |
 | `view_count` | 12 | 6 | 12 = 6 + a guided 45° pass |
 | `steps` | 4 | 4 | the speed lever; 4 is a preview, use 25 for final quality |
 | `texture_size` (Bake) | 2048 | | 4096 for hero assets: same VRAM, slower bake |
+| `camera_fit` (Prepare) | custom, margin 0, padding 0 | | recommended by MostAadTech: fits the reference edge to edge |
 
 Keep the same seed on both Generate nodes. `tiled_decode` stays on for low VRAM.
 
@@ -175,7 +176,7 @@ RTX 5080 16 GB, 4.1M-face character, 1024 views. Measured by me:
 
 - **Workflow 1, 25 steps:** 432 s total on the first run (incl. warm-up). Albedo 203 s, MR 89 s, GPU UV unwrap of 4.1M faces 17.7 s.
 - **Workflow 2:** the second pass adds ~32 s (11 steps). Surface seen by a camera: 86.4% → 92.8%.
-- **Workflow 3** (Klein Q4_0 + Qwen3 8B Q4_K_M, 4 steps, 12+6 views): 229 s with node pack `b98f4f4`; Klein 5.5 GB + text encoder 6.8 GB loaded on a 16 GB card. With the current pinned version `8d434a2` and its new Fast Surface Texture Baker: 240 s, first run after a ComfyUI restart.
+- **Workflow 3** (Klein Q4_0 + Qwen3 8B Q4_K_M, 4 steps, 12+6 views): 229 s with node pack `b98f4f4`; Klein 5.5 GB + text encoder 6.8 GB loaded on a 16 GB card. With the current pinned version `8d434a2` and its new Fast Surface Texture Baker: 240 s, first run after a ComfyUI restart. With camera fit set to custom: 214 s at 1024 views; 334 s at 2048 views (mesh prep reused from the 1024 run, so a fresh 2048 run takes a bit longer), peak 15.1 GB used on the whole 16 GB card.
 
 Reported by the community (not measured by me):
 

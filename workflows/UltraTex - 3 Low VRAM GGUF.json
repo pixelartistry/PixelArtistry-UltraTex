@@ -1311,12 +1311,22 @@
    "widgets_values": [
     "front",
     "foreground",
-    "auto_smooth"
+    "auto_smooth",
+    1024,
+    "custom",
+    0,
+    0,
+    1
    ],
    "widgets_values_named": {
     "alignment": "front",
     "mask_polarity": "foreground",
-    "normal_mode": "auto_smooth"
+    "normal_mode": "auto_smooth",
+    "normal_view_resolution": 1024,
+    "camera_fit": "custom",
+    "image_margin_percent": 0,
+    "image_padding_pixels": 0,
+    "reference_zoom": 1
    },
    "title": "Prepare mesh + reference"
   },
@@ -1678,7 +1688,7 @@
    "outputs": [],
    "properties": {},
    "widgets_values": [
-    "## 3 \u00b7 Prepare\nRenders the normal views and lines your reference up with the front camera.\n\n**Check the three previews before a long run:**\n- **Normal views:** your mesh from all sides.\n- **Aligned reference:** the object should fill the silhouette **edge to edge**.\n- **Aligned mask:** white object on black.\n\nSmall or shifted? Check `mask_polarity`: **foreground** for BiRefNet, **background** if you use Load Image's own MASK instead."
+    "## 3 \u00b7 Prepare\nRenders the normal views and lines your reference up with the front camera.\n\n`camera_fit = custom` with margin and padding at **0** (recommended by MostAadTech): the reference is fitted edge to edge, no extra border.\n\n**Check the three previews before a long run:**\n- **Normal views:** your mesh from all sides.\n- **Aligned reference:** the object should fill the silhouette **edge to edge**.\n- **Aligned mask:** white object on black.\n\nSmall or shifted? Check `mask_polarity`: **foreground** for BiRefNet, **background** if you use Load Image's own MASK instead."
    ],
    "title": "Read me \u00b7 Prepare",
    "color": "#432",
@@ -1702,7 +1712,7 @@
    "outputs": [],
    "properties": {},
    "widgets_values": [
-    "## 4 \u00b7 Generate views\n**All quality and speed settings live on the two Generate nodes.**\n\n| Setting | Albedo | MR | Notes |\n|---|---|---|---|\n| `view_resolution` | **1024** | 1024 | 6 GB: 1024 \u00b7 8 GB: up to 1536\u20132048 |\n| `view_count` | **12** | **6** | 12 = 6 + a guided 45\u00b0 pass |\n| `steps` | **4** | 4 | dev: 4 is enough, 8 is better |\n| `extra_angle_mode` | guided | \u2013 | 45\u00b0 pass starts from pass 1 |\n\n- **Same seed** on both Generate nodes.\n- **Steps are the speed lever.** Time scales with steps. Compare 4 / 8 / 25 on your asset and judge the back and sides, not just the front.\n- MR maps are low-detail, so **6 views** are enough there.\n- `tiled_decode` **on** for low VRAM."
+    "## 4 \u00b7 Generate views\n**All quality and speed settings live on the two Generate nodes.**\n\n| Setting | Albedo | MR | Notes |\n|---|---|---|---|\n| `view_resolution` | **1024** | 1024 | 6 GB: 1024 \u00b7 8 GB: up to 1536\u20132048 |\n| `view_count` | **12** | **6** | 12 = 6 + a guided 45\u00b0 pass |\n| `steps` | **4** | 4 | dev: 4 is enough, 8 is better |\n| `extra_angle_mode` | guided | \u2013 | 45\u00b0 pass starts from pass 1 |\n\n- **16 GB card?** Set `view_resolution` to **2048** on both Generate nodes: noticeably sharper hair, face and small details. My test (RTX 5080 16 GB): 334 s vs 214 s at 1024, with mesh prep already cached, so a fresh 2048 run takes a bit longer.\n- **Same seed** on both Generate nodes.\n- **Steps are the speed lever.** Time scales with steps. Compare 4 / 8 / 25 on your asset and judge the back and sides, not just the front.\n- MR maps are low-detail, so **6 views** are enough there.\n- `tiled_decode` **on** for low VRAM."
    ],
    "title": "Read me \u00b7 Generate",
    "color": "#432",
